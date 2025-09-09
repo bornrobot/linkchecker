@@ -143,8 +143,9 @@ class LinkFinder:
         if tag == "base" and not self.base_ref:
             self.base_ref = attrs.get("href", '')
         tagattrs = self.tags.get(tag, self.universal_attrs)
+        log.info(LOG_CMDLINE, "MY HACK!")
         if tag == "a" and attrs.get('rel') == "nofollow":
-            log.debug(LOG_CHECK, "a with no follow tag %s attrs %s", tag, attrs)
+            log.debug(LOG_CHECK, "a with nofollow tag %s attrs %s", tag, attrs)
             return
         # parse URLs in tag (possibly multiple URLs in CSS styles)
         for attr in sorted(tagattrs.intersection(attrs)):
